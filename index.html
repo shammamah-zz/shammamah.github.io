@@ -1,0 +1,98 @@
+<head> 
+<title>Sham </title>
+    
+<!-- I spent way too long making the colours do the thing that they are doing right now --> 
+    
+<script>
+    function genEmail(){
+        var mailto = "mailto:shammamah.hossain@gmail.com?";
+        var subj = "subject="+document.getElementById("subj").value;
+        var msg = "&body="+document.getElementById("msg").value; 
+        var toSend = mailto.concat(subj).concat(msg);
+        window.location.href = toSend;
+    }
+    
+    function onLoad(){
+        setInterval(function bgc(){
+            var n = new Date().getTime(); 
+            n = n/10; 
+            var c = n%768; 
+            if(c<256){
+                color="rgb("+(255-c+230)+","+(c+230-0)+",230)";
+            }
+            if(c<512 && c>256){
+                color="rgb(230,"+(512-c+230)+","+(c+230-256)+")";
+            }
+            if(c<768 && c>512){
+                color="rgb("+(c+230-512)+",230,"+(768-c+230)+")";
+            }
+            document.body.style.backgroundColor=color;
+        }, 1);
+    }
+</script>
+    
+    <style>
+
+        .email{
+            position: absolute; 
+            width:50%; 
+            left:25%;
+            top:10%; 
+            opacity:1; 
+            color: deeppink; 
+        }
+
+        #thanks{
+            position:absolute; 
+            width:30%; 
+            top:50%; 
+            left:35%; 
+            opacity:0; 
+            height:500px; 
+            color:green; 
+            background-color: red; 
+            transition-duration: 1000ms; 
+        }
+        body{
+            height:10000px;
+            transition-duration:100ms; 
+            text-align: center; 
+            padding:5px; 
+        }
+        button{
+            background-color: white; 
+            margin:15px; 
+            border-style:none; 
+            border-radius: 3px;
+            border-style: none;
+        }
+        textarea{
+            background-color:rgba(0,0,0,0.1);
+            width:100%; 
+            color:white; 
+            border-style: none; 
+            resize: none; 
+            font-weight: 100;
+            margin:1px; 
+        }
+        textarea:focus{
+            background-color:rgba(0,0,0,0.25); 
+            transition-duration: 1000ms; 
+        }
+
+    </style>
+
+</head>
+
+
+<body onload="onLoad()">
+    <i>Welcome to my page. It's still under construction. </br>Enjoy the colours, or leave me an e-mail. </i>
+
+    <div class = "email">
+        <textarea id="subj" value="subject" rows="1"/>Sham, you're so cool!</textarea></br>
+        <textarea id="msg" rows="10" value="message"/>You're the best.</textarea></br></br>
+        <button id="test" onclick="genEmail()">click me fam</button>
+    </div>
+
+</body>
+
