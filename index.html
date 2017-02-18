@@ -4,95 +4,147 @@
 <!-- I spent way too long making the colours do the thing that they are doing right now --> 
     
 <script>
+
+    function onLoad(){
+        setInterval(function bgc(){
+            var s = Math.floor(new Date()/333%30);
+            
+            if(s<10){
+                color="rgb("+(245+(s))+",245,"+(255-(s))+")";
+            }
+            else if(s<20 && s>=10){
+                color="rgb("+(255-(s-10))+","+(245+(s-10))+",245)";
+            }
+            else if(s<30 && s>=20){
+                color="rgb(245,"+(255-(s-20))+","+(245+(s-20))+")";
+            }
+            
+            document.body.style.backgroundColor=color;
+        },0.1);
+        
+    }
+    
+    function dispEmail(){
+        document.getElementById("cover").style.opacity = "0.75";
+        document.getElementById("cover").style.zIndex = "0";
+        document.getElementById("email").style.zIndex = "100";
+        document.getElementById("email").style.opacity = "100";
+    }
+
     function genEmail(){
         var mailto = "mailto:shammamah.hossain@gmail.com?";
         var subj = "subject="+document.getElementById("subj").value;
         var msg = "&body="+document.getElementById("msg").value; 
+        
         var toSend = mailto.concat(subj).concat(msg);
+  
         window.location.href = toSend;
+        
+        hideEmail(); 
     }
     
-    function onLoad(){
-        setInterval(function bgc(){
-            var n = new Date().getTime(); 
-            n = n/10; 
-            var c = n%768; 
-            if(c<256){
-                color="rgb("+(255-c+230)+","+(c+230-0)+",230)";
-            }
-            if(c<512 && c>256){
-                color="rgb(230,"+(512-c+230)+","+(c+230-256)+")";
-            }
-            if(c<768 && c>512){
-                color="rgb("+(c+230-512)+",230,"+(768-c+230)+")";
-            }
-            document.body.style.backgroundColor=color;
-        }, 1);
+    function hideEmail(){     
+        document.getElementById("email").style.opacity = "0";
+        document.getElementById("email").style.zIndex = "-1";
+        document.getElementById("cover").style.opacity = "0";
+        document.getElementById("cover").style.zIndex = "-1";
     }
+    
+    document.onkeydown = function(evt){
+        if(evt.keyCode == 27){
+            hideEmail(); 
+        }
+    }
+    
+    
 </script>
     
     <style>
 
-        .email{
+        #email{
+            text-align: left; 
+            transition-duration: 1000ms;
             position: absolute; 
             width:50%; 
             left:25%;
             top:10%; 
-            opacity:1; 
-            color: deeppink; 
+            min-width:400px; 
+            opacity:0; 
+            font-family: Helvetica; 
+            font-weight: 100; 
+            color:dimgray; 
+            font-size: 80%; 
+            z-index:-1; 
+        }
+        
+        #cover{
+            transition-duration: 500ms; 
+            background-color: white; 
+            height:100%; 
+            width: 100%; 
+            opacity:0; 
+            z-index:-1; 
+            position:absolute; 
+            margin:0px; 
+            left:0px; 
+            top:0px;
+            padding:0px; 
         }
 
-        #thanks{
-            position:absolute; 
-            width:30%; 
-            top:50%; 
-            left:35%; 
-            opacity:0; 
-            height:500px; 
-            color:green; 
-            background-color: red; 
-            transition-duration: 1000ms; 
-        }
         body{
-            height:10000px;
-            transition-duration:100ms; 
             text-align: center; 
             padding:5px; 
+            transition-duration: 500ms; 
         }
         button{
-            background-color: white; 
-            margin:15px; 
+            background-color: black; 
+            color: white; 
             border-style:none; 
             border-radius: 3px;
             border-style: none;
+            position: inherit; 
+            right:0px; 
+            opacity:0.35; 
         }
         textarea{
-            background-color:rgba(0,0,0,0.1);
+            background-color:rgba(0,0,0,0.05);
             width:100%; 
-            color:white; 
+            color:black; 
             border-style: none; 
+            border-radius: 2px; 
             resize: none; 
             font-weight: 100;
             margin:1px; 
+            padding:5px; 
+            transition-duration: 500ms;
         }
         textarea:focus{
-            background-color:rgba(0,0,0,0.25); 
-            transition-duration: 1000ms; 
+            color:white;
+            background-color:rgba(0,0,0,0.35); 
+            transition-duration: 500ms; 
         }
-
+ 
     </style>
 
 </head>
 
 
 <body onload="onLoad()">
-    <i>Welcome to my page. It's still under construction. </br>Enjoy the colours, or leave me an e-mail. </i>
+    <i>Welcome to my page. It's still under construction. </br>Enjoy the colours, or <a onclick="dispEmail()" href="#">leave me an e-mail</a>. 
+    </br>You can also <a href="./Hossain_CV.pdf>">take a look at my CV</a>. 
 
-    <div class = "email">
-        <textarea id="subj" value="subject" rows="1"/>Sham, you're so cool!</textarea></br>
-        <textarea id="msg" rows="10" value="message"/>You're the best.</textarea></br></br>
-        <button id="test" onclick="genEmail()">click me fam</button>
+ </i>
+    
+    <div id = "cover"></div>
+
+    <div id = "email">
+        <textarea id="subj" value="subject" placeholder="Subject" rows="1"/></textarea></br>
+        <textarea id="msg" rows="10" value="message" placeholder="Message"/></textarea></br></br>
+(press ESC to close)
+        <button id="test" onclick="genEmail()">Send</button>
     </div>
+
+
 
 </body>
 
