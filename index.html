@@ -1,3 +1,4 @@
+
 <head> 
 <title>Sham </title>
     
@@ -25,10 +26,11 @@
     }
     
     function dispEmail(){
-        document.getElementById("cover").style.opacity = "0.75";
         document.getElementById("cover").style.zIndex = "0";
+        document.getElementById("cover").style.opacity="0.5"; 
         document.getElementById("email").style.zIndex = "100";
         document.getElementById("email").style.opacity = "100";
+        document.getElementById("mainContent").style.filter="blur(5px)";
     }
 
     function genEmail(){
@@ -46,8 +48,11 @@
     function hideEmail(){     
         document.getElementById("email").style.opacity = "0";
         document.getElementById("email").style.zIndex = "-1";
-        document.getElementById("cover").style.opacity = "0";
         document.getElementById("cover").style.zIndex = "-1";
+        document.getElementById("cover").style.opacity="0"; 
+        document.getElementById("mainContent").style.filter = "none"; 
+        document.getElementById("subj").value="";
+        document.getElementById("msg").value=""; 
     }
     
     document.onkeydown = function(evt){
@@ -56,11 +61,26 @@
         }
     }
     
-    
 </script>
     
     <style>
 
+        #mainContent{
+            filter:none; 
+            color:black; 
+            transition-duration:500ms; 
+            min-width:600px; 
+            width:100%; 
+        }
+        .contentBlock{
+            max-width: 800px; 
+            min-width: inherit; 
+            width:auto;  
+            height:auto; 
+            padding:30px;
+            color:black; 
+            text-align: left; 
+        }
         #email{
             text-align: left; 
             transition-duration: 1000ms;
@@ -75,8 +95,7 @@
             color:dimgray; 
             font-size: 80%; 
             z-index:-1; 
-        }
-        
+        }       
         #cover{
             transition-duration: 500ms; 
             background-color: white; 
@@ -90,11 +109,34 @@
             top:0px;
             padding:0px; 
         }
+        #sidebar{
+            background-color:black; 
+            opacity:0.7;
+            color:white; 
+            height:500px; 
+            width:300px; 
+            position:absolute; 
+            left:0px; 
+            top:0px; 
+            filter:none; 
+        }
 
         body{
             text-align: center; 
             padding:5px; 
             transition-duration: 500ms; 
+        }
+        h2{
+            color:black; 
+            font-family: inherit; 
+            text-align: left;
+            padding:0px; 
+        }
+        p{
+            color:inherit; 
+            font-family:inherit; 
+            text-align:left; 
+            padding-left:50px; 
         }
         button{
             background-color: black; 
@@ -107,7 +149,7 @@
             opacity:0.35; 
         }
         textarea{
-            background-color:rgba(0,0,0,0.05);
+            background-color:rgba(0,0,0,0.10);
             width:100%; 
             color:black; 
             border-style: none; 
@@ -119,9 +161,13 @@
             transition-duration: 500ms;
         }
         textarea:focus{
-            color:white;
-            background-color:rgba(0,0,0,0.35); 
+            color:black;
+            background-color:rgba(0,0,0,0.20); 
             transition-duration: 500ms; 
+        }
+        .test{
+            background-color: black; 
+            color:white; 
         }
  
     </style>
@@ -130,20 +176,30 @@
 
 
 <body onload="onLoad()">
-    <i>Welcome to my page. It's still under construction. </br>Enjoy the colours, or <a onclick="dispEmail()" href="#">leave me an e-mail</a>. 
-    </br>You can also <a href="./Hossain_CV.pdf">take a look at my CV</a>. 
-
- </i>
     
-    <div id = "cover"></div>
+    <div id="mainContent"> 
+       
+     
+        <div class="contentBlock"><h2>Shammamah Hossain</h2>
+            <i>Welcome to my page. It's still under construction. </br>Enjoy the colours, or <a onclick="dispEmail()" href="#">leave me an e-mail</a>.
+        
+            </br>You can also <a href="./Hossain_CV.pdf">take a look at my CV</a>.</i>
+
+        </div>
+ 
+    </div>   
+    
+
+
+
+    <div id = "cover" onclick="hideEmail()"></div>
 
     <div id = "email">
         <textarea id="subj" value="subject" placeholder="Subject" rows="1"/></textarea></br>
         <textarea id="msg" rows="10" value="message" placeholder="Message"/></textarea></br></br>
-(press ESC to close)
-        <button id="test" onclick="genEmail()">Send</button>
+(press ESC or click outside to close)
+        <button id="genEmail" onclick="genEmail()">Send</button>
     </div>
-
 
 
 </body>
