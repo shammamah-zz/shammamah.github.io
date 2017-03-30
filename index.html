@@ -34,15 +34,25 @@
         document.getElementById(a).style.opacity="0"; 
         document.getElementById(b).style.opacity="0"; 
         document.getElementById(c).style.opacity="0";
+        document.getElementById("aboutprocessing").style.opacity="0"; 
 
         setTimeout(function change(){
             document.getElementById(s).style.opacity="1"; 
             document.getElementById(a).style.display="none"; 
             document.getElementById(b).style.display="none"; 
             document.getElementById(c).style.display="none"; 
+            document.getElementById("aboutprocessing").style.display="none"; 
         },500);
         
         document.getElementById("aboutbg").style.filter="blur(2px)"; 
+    }
+    
+    function aboutBG(){
+        showIntro(0); 
+        document.getElementById("aboutprocessing").style.display="block"; 
+        setTimeout(function showGifDesc(){
+            document.getElementById("aboutprocessing").style.opacity="1"; 
+        },200)
     }
     
     function showIntro(i){
@@ -56,15 +66,22 @@
         }
         else if(i==1){  
             document.getElementById("intro").style.display="block";
-            document.getElementById("introbg").style.display="block";   
+            document.getElementById("introbg").style.display="block"; 
+            document.getElementById("edu").style.opacity="0"; 
+            document.getElementById("ext").style.opacity="0"; 
+            document.getElementById("int").style.opacity="0"; 
+            document.getElementById("prg").style.opacity="0"; 
+            document.getElementById("aboutprocessing").style.opacity="0"; 
             setTimeout(function showIntro(){
                 document.getElementById("intro").style.opacity="1";
-                document.getElementById("introbg").style.opacity="0.5"; 
+                document.getElementById("introbg").style.opacity="0.5";
+                document.getElementById("edu").style.display="none"; 
+                document.getElementById("ext").style.display="none"; 
+                document.getElementById("int").style.display="none"; 
+                document.getElementById("prg").style.display="none"; 
+                document.getElementById("aboutprocessing").style.display="none"; 
             },500)
-            document.getElementById("edu").style.display="none"; 
-            document.getElementById("ext").style.display="none"; 
-            document.getElementById("int").style.display="none"; 
-            document.getElementById("prg").style.display="none"; 
+           
             document.getElementById("aboutbg").style.filter="none"; 
 
         }
@@ -135,8 +152,11 @@
             z-index:101; 
             transition-duration:1000ms; 
         }
-        #intro a:visited{
+        #intro a, #aboutprocessing a{
             color:pink; 
+        }
+        #intro a:visited, #aboutprocessing a:visited{
+            color:palevioletred; 
         }
         #introbg{
             position:fixed;
@@ -156,6 +176,7 @@
             height:400px; 
             transition-duration:1000ms;
             overflow:hidden; 
+            color:white; 
         }
         #about{
             position:fixed;
@@ -168,6 +189,21 @@
             border-color:white; 
             border-width:thin; 
             z-index:1; 
+        }
+        #aboutprocessing{
+            position:fixed; 
+            top:525px; 
+            left:225px; 
+            width:470px; 
+            height:100px; 
+            line-height:150%; 
+            color:white; 
+            font-size: 90%; 
+            text-align: justify; 
+            font-weight:100; 
+            opacity:0; 
+            display:none; 
+            transition:1000ms; 
         }
         #email{
             text-align: left; 
@@ -202,7 +238,7 @@
             color:white; 
             height:auto; 
             width:auto; 
-            top:175px; 
+            top:165px; 
             left:60px; 
             padding:15px;
             text-align: right;
@@ -316,12 +352,13 @@
 
     
     <div id="about">
+        
         <div id="introbg"></div>
         
         <div id="intro"><h2>Shammamah Hossain</h2>
-            <i>Welcome to my page. It's still under construction. </br>Enjoy the colours, or <a onclick="dispEmail()" href="#">leave me an e-mail</a>.
+            <i>Welcome to my page! </br>Enjoy the colours, or <a onclick="dispEmail()" href="#">leave me an e-mail</a>.
             </br>You can also <a href="./Hossain_CV.pdf">take a look at my CV</a>.
-</br>Get rid of this overlay <a onclick="showIntro(0)" href="#">here</a>.</i>
+</br>Find out more about the background <a onclick="aboutBG()" href="#">here</a>.</i>
         </div>
 
         <div id="edu">
@@ -348,7 +385,9 @@
         </div> 
 
     </div> 
-
+    
+<div id="aboutprocessing">The gif above was made with <a href="https://processing.org">Processing 3</a>. Each pixel represents an integer, and the integers increase successively from left to right, then from top to bottom. The coloured pixels are prime numbers, and the colour of each pixel is determined randomly to be either red, green, or blue.
+    </br>For more of my Processing code, please visit my <a href="https://github.com/shammamah/processing">Processing repository</a>.</div>
 
 `</div>
 
