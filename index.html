@@ -1,36 +1,83 @@
 
 <head> 
 <title>Sham </title>
+
     
 <!-- I spent way too long making the colours do the thing that they are doing right now --> 
-    
+     
 <script>
 
     function onLoad(){
         setInterval(function bgc(){
-            var s = Math.floor(new Date()/333%30);
+            var s = Math.floor(new Date()/100%150);
             
-            if(s<10){
-                color="rgb("+(245+(s))+",245,"+(255-(s))+")";
+            if(s<50){
+                color="rgb("+(205+(s))+",205,"+(255-(s))+")";
             }
-            else if(s<20 && s>=10){
-                color="rgb("+(255-(s-10))+","+(245+(s-10))+",245)";
+            else if(s<100 && s>=50){
+                color="rgb("+(255-(s-50))+","+(205+(s-50))+",205)";
             }
-            else if(s<30 && s>=20){
-                color="rgb(245,"+(255-(s-20))+","+(245+(s-20))+")";
+            else if(s<150 && s>=100){
+                color="rgb(205,"+(255-(s-100))+","+(205+(s-100))+")";
             }
             
-            document.body.style.backgroundColor=color;
+            document.getElementById("sidebar").style.borderColor=color;
+            document.getElementById("about").style.borderColor=color;
+
         },0.1);
         
     }
+
+    function changeContent(s,a,b,c){
+        showIntro(0); 
+        document.getElementById(s).style.display="block";
+        document.getElementById(a).style.opacity="0"; 
+        document.getElementById(b).style.opacity="0"; 
+        document.getElementById(c).style.opacity="0";
+
+        setTimeout(function change(){
+            document.getElementById(s).style.opacity="1"; 
+            document.getElementById(a).style.display="none"; 
+            document.getElementById(b).style.display="none"; 
+            document.getElementById(c).style.display="none"; 
+        },500);
+        
+        document.getElementById("aboutbg").style.filter="blur(2px)"; 
+    }
     
+    function showIntro(i){
+        if(i==0){ 
+            document.getElementById("intro").style.opacity="0"; 
+            document.getElementById("introbg").style.opacity="0"; 
+            setTimeout(function hideIntro(){
+                document.getElementById("introbg").style.display="none";
+                document.getElementById("intro").style.display="none";
+            },1000);
+        }
+        else if(i==1){  
+            document.getElementById("intro").style.display="block";
+            document.getElementById("introbg").style.display="block";   
+            setTimeout(function showIntro(){
+                document.getElementById("intro").style.opacity="1";
+                document.getElementById("introbg").style.opacity="0.5"; 
+            },500)
+            document.getElementById("edu").style.display="none"; 
+            document.getElementById("ext").style.display="none"; 
+            document.getElementById("int").style.display="none"; 
+            document.getElementById("prg").style.display="none"; 
+            document.getElementById("aboutbg").style.filter="none"; 
+
+        }
+    }
+
     function dispEmail(){
-        document.getElementById("cover").style.zIndex = "0";
-        document.getElementById("cover").style.opacity="0.5"; 
+        document.getElementById("cover").style.zIndex = "1";
+        document.getElementById("cover").style.opacity="0.25"; 
         document.getElementById("email").style.zIndex = "100";
         document.getElementById("email").style.opacity = "100";
         document.getElementById("mainContent").style.filter="blur(5px)";
+        document.getElementById("about").style.filter="blur(5px)";
+        document.getElementById("aboutbg").style.filter="blur(5px)";
     }
 
     function genEmail(){
@@ -51,6 +98,8 @@
         document.getElementById("cover").style.zIndex = "-1";
         document.getElementById("cover").style.opacity="0"; 
         document.getElementById("mainContent").style.filter = "none"; 
+        document.getElementById("about").style.filter="none";
+        document.getElementById("aboutbg").style.filter="none";
         document.getElementById("subj").value="";
         document.getElementById("msg").value=""; 
     }
@@ -66,20 +115,59 @@
     <style>
 
         #mainContent{
+            position:absolute;
+            height:auto; 
+            width:100%; 
             filter:none; 
-            color:black; 
+            color:black;
             transition-duration:500ms; 
-            min-width:600px; 
             width:100%; 
         }
-        .contentBlock{
-            max-width: 800px; 
-            min-width: inherit; 
-            width:auto;  
-            height:auto; 
-            padding:30px;
-            color:black; 
-            text-align: left; 
+        #intro{
+            position:fixed;
+            display:block; 
+            top:100px; 
+            width:400px;
+            height:300px;  
+            color:white; 
+            text-align: left;
+            padding:50px; 
+            z-index:101; 
+            transition-duration:1000ms; 
+        }
+        #intro a:visited{
+            color:pink; 
+        }
+        #introbg{
+            position:fixed;
+            top:100px; 
+            width:500px;
+            height:400px;
+            text-align: left;
+            background-color:black; 
+            opacity:0.5; 
+            transition-duration:1000ms; 
+        }
+        #aboutbg{
+            position:fixed;
+            top:100px; 
+            width:500px;
+            margin-left:200px; 
+            height:400px; 
+            transition-duration:1000ms;
+            overflow:hidden; 
+        }
+        #about{
+            position:fixed;
+            top:100px; 
+            width:500px;
+            height:400px; 
+            margin-left:200px; 
+            transition-duration:1000ms;
+            border-style:solid;
+            border-color:white; 
+            border-width:thin; 
+            z-index:1; 
         }
         #email{
             text-align: left; 
@@ -92,7 +180,7 @@
             opacity:0; 
             font-family: Helvetica; 
             font-weight: 100; 
-            color:dimgray; 
+            color:lightgrey; 
             font-size: 80%; 
             z-index:-1; 
         }       
@@ -110,27 +198,65 @@
             padding:0px; 
         }
         #sidebar{
-            background-color:black; 
-            opacity:0.7;
+            position: fixed; 
             color:white; 
-            height:500px; 
-            width:300px; 
-            position:absolute; 
-            left:0px; 
-            top:0px; 
-            filter:none; 
+            height:auto; 
+            width:auto; 
+            top:175px; 
+            left:60px; 
+            padding:15px;
+            text-align: right;
+            border-style:solid; 
+            border-width:thin; 
+        }
+        .sidebarItem{
+            padding-top:10px; 
+            padding-bottom:10px; 
+            padding-right,padding-left:15px;
+            width:auto; 
+            position:static;
+        }
+        .sidebarItem img{
+            height:25px; 
+            width:25px; 
         }
 
+        #edu,#ext,#int,#prg {
+            opacity:0; 
+            position:fixed; 
+            width:400px; 
+            top:85px; 
+            padding:50px; 
+            z-index:1001; 
+            display:none; 
+            transition-duration: 1000ms; 
+            text-align: justify; 
+            color:white; 
+        }
+        .pgif{
+            height:200px; 
+            width:auto; 
+            position:static;
+            padding:10px; 
+            float:left; 
+            transition-duration: 1000ms; 
+        }
         body{
             text-align: center; 
             padding:5px; 
             transition-duration: 500ms; 
+            font-family: monospace;
+            background-color:black; 
         }
-        h2{
-            color:black; 
+        h2,h3{
+            color:white; 
             font-family: inherit; 
             text-align: left;
+            font-size:120%; 
             padding:0px; 
+        }
+        h3{
+            font-size:105%; 
         }
         p{
             color:inherit; 
@@ -151,7 +277,7 @@
         textarea{
             background-color:rgba(0,0,0,0.10);
             width:100%; 
-            color:black; 
+            color:white; 
             border-style: none; 
             border-radius: 2px; 
             resize: none; 
@@ -161,13 +287,9 @@
             transition-duration: 500ms;
         }
         textarea:focus{
-            color:black;
+            color:white;
             background-color:rgba(0,0,0,0.20); 
             transition-duration: 500ms; 
-        }
-        .test{
-            background-color: black; 
-            color:white; 
         }
  
     </style>
@@ -176,23 +298,60 @@
 
 
 <body onload="onLoad()">
-    
-    <div id="mainContent"> 
-       
-     
-        <div class="contentBlock"><h2>Shammamah Hossain</h2>
-            <i>Welcome to my page. It's still under construction. </br>Enjoy the colours, or <a onclick="dispEmail()" href="#">leave me an e-mail</a>.
-        
-            </br>You can also <a href="./Hossain_CV.pdf">take a look at my CV</a>.</i>
-
-        </div>
- 
-    </div>   
-    
-
-
-
     <div id = "cover" onclick="hideEmail()"></div>
+    <div id="mainContent"> 
+
+        <div id="sidebar">
+            <div class="sidebarItem"><a href="#" onclick="showIntro(1)"><img src="./resources/home.png"></a></div>
+            <div class="sidebarItem"><a href="#" onclick="changeContent('edu','ext','int','prg')"><img src="./resources/school.png"></a></div>
+            <div class="sidebarItem"><a href="#" onclick="changeContent('ext','edu','int','prg')"><img src="./resources/extracurriculars.png"></a></div>
+            <div class="sidebarItem"><a href="#" onclick="changeContent('int','edu','ext','prg')"><img src="./resources/interests.png"></a></div>
+            <div class="sidebarItem"><a href="#" onclick="changeContent('prg','edu','ext','int')"><img src="./resources/programming.png"></a></div>
+        </div>
+
+    
+    <div id="aboutbg">
+    <img src="resources/noise.gif" height="400px" width="600px"></img>
+</div>
+
+    
+    <div id="about">
+        <div id="introbg"></div>
+        
+        <div id="intro"><h2>Shammamah Hossain</h2>
+            <i>Welcome to my page. It's still under construction. </br>Enjoy the colours, or <a onclick="dispEmail()" href="#">leave me an e-mail</a>.
+            </br>You can also <a href="./Hossain_CV.pdf">take a look at my CV</a>.
+</br>Get rid of this overlay <a onclick="showIntro(0)" href="#">here</a>.</i>
+        </div>
+
+        <div id="edu">
+            <h2>Education.</h2></br>
+        I currently attend McGill University in Montréal, Québec. I am pursuing a B.Sc. with a joint major of physics and computer science. 
+        </div>
+
+        <div id="ext">
+            <h2>Extracurriculars.</h2>
+            <h3>McGill Space Systems Group</h3>
+            I am a part of the MSSG as a member of the Canadian Satellite Design Challenge (CSDC) competition team. Currently, we are working on building a 3U CubeSat 
+            <h3>RoboHacks (McGill Robotics)</h3>
+            I am the project manager for RoboHacks, which is a robotics hackathon hosted by McGill Robotics. 
+        </div>
+
+        <div id="int">
+            <h2>Interests.</h2></br>
+            I am interested in quantum computing, astrophysics, and high-energy particle physics. 
+        </div>
+
+        <div id="prg">
+            <h2>Programming.</h2></br>            
+            I have several years of experience with Java. Additionally, I am self-taught in HTML/CSS and JavaScript (I wrote this page from scratch). I'm also comfortable with using Python for scientific computing.
+        </div> 
+
+    </div> 
+
+
+`</div>
+
 
     <div id = "email">
         <textarea id="subj" value="subject" placeholder="Subject" rows="1"/></textarea></br>
@@ -200,7 +359,7 @@
 (press ESC or click outside to close)
         <button id="genEmail" onclick="genEmail()">Send</button>
     </div>
-
+</div>
 
 </body>
 
