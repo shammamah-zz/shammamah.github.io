@@ -55,8 +55,14 @@
         document.getElementById("aboutbg").style.filter="none"; 
         document.getElementById("aboutprocessing").style.display="block"; 
         setTimeout(function showGifDesc(){
-            document.getElementById("aboutprocessing").style.opacity="1"; 
-        },200)
+            document.getElementById("aboutprocessing").style.opacity="1";  
+        },200);
+        setTimeout(function stopDisp(){
+            document.getElementById("edu").style.display="none"; 
+            document.getElementById("ext").style.display="none"; 
+            document.getElementById("int").style.display="none"; 
+            document.getElementById("prg").style.display="none";
+        },1200);
     }
     
     function showIntro(i){
