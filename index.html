@@ -22,12 +22,11 @@
             }
             
             document.getElementById("sidebar").style.borderColor=color;
-            document.getElementById("about").style.borderColor=color;
-
-        },0.1);
+            
+        },0.01);
         
     }
-
+    
     function changeContent(s,a,b,c){
         showIntro(0); 
         document.getElementById(s).style.display="block";
@@ -49,6 +48,11 @@
     
     function aboutBG(){
         showIntro(0); 
+        document.getElementById("edu").style.opacity="0"; 
+        document.getElementById("ext").style.opacity="0"; 
+        document.getElementById("int").style.opacity="0"; 
+        document.getElementById("prg").style.opacity="0"; 
+        document.getElementById("aboutbg").style.filter="none"; 
         document.getElementById("aboutprocessing").style.display="block"; 
         setTimeout(function showGifDesc(){
             document.getElementById("aboutprocessing").style.opacity="1"; 
@@ -129,7 +133,7 @@
     
 </script>
     
-    <style>
+<style>
 
         #mainContent{
             position:absolute;
@@ -146,17 +150,18 @@
             top:100px; 
             width:400px;
             height:300px;  
-            color:white; 
+            color:black; 
             text-align: left;
             padding:50px; 
             z-index:101; 
             transition-duration:1000ms; 
         }
-        #intro a, #aboutprocessing a{
-            color:pink; 
+        a{
+            color:#0061ff; 
+            text-decoration: none; 
         }
-        #intro a:visited, #aboutprocessing a:visited{
-            color:palevioletred; 
+        a:visited{
+            color:#0061ff; 
         }
         #introbg{
             position:fixed;
@@ -164,8 +169,8 @@
             width:500px;
             height:400px;
             text-align: left;
-            background-color:black; 
-            opacity:0.5; 
+            background-color:white; 
+            opacity:0.7; 
             transition-duration:1000ms; 
         }
         #aboutbg{
@@ -176,7 +181,9 @@
             height:400px; 
             transition-duration:1000ms;
             overflow:hidden; 
-            color:white; 
+            background-color: white; 
+            opacity:0.5; 
+            color:black; 
         }
         #about{
             position:fixed;
@@ -186,19 +193,19 @@
             margin-left:200px; 
             transition-duration:1000ms;
             border-style:solid;
-            border-color:white; 
+            border-color:black; 
             border-width:thin; 
             z-index:1; 
         }
         #aboutprocessing{
             position:fixed; 
-            top:525px; 
+            top:590px; 
             left:225px; 
             width:470px; 
             height:100px; 
             line-height:150%; 
-            color:white; 
-            font-size: 90%; 
+            color:black; 
+            font-size: 70%; 
             text-align: justify; 
             font-weight:100; 
             opacity:0; 
@@ -216,7 +223,7 @@
             opacity:0; 
             font-family: Helvetica; 
             font-weight: 100; 
-            color:lightgrey; 
+            color:black; 
             font-size: 80%; 
             z-index:-1; 
         }       
@@ -256,19 +263,51 @@
             height:25px; 
             width:25px; 
         }
-
+        #actionboxcontainer{
+            position:fixed;
+            top:520px; 
+            width:550px;
+            height:auto; 
+            margin-left:176px; 
+        }
+        .actionbox{
+            display:inline-block;
+            border-style:solid; 
+            position:static; 
+            border-width: thin; 
+            border-color: black; 
+            padding:10px;
+            color:#1D1D1D;
+            height:auto; 
+            width:85px; 
+            margin:10px; 
+            font-variant: small-caps;
+            transition-duration: 1000ms; 
+        }
+        .actionbox:hover{
+            border-color:#DDDDDD; 
+            color:black;
+        }
+        
         #edu,#ext,#int,#prg {
             opacity:0; 
             position:fixed; 
-            width:400px; 
-            top:85px; 
-            padding:50px; 
+            width:375px;
+            height:300px; 
+            top:150px; 
+            left:225px;
+            padding-left:50px; 
+            padding-right:20px;
             z-index:1001; 
             display:none; 
             transition-duration: 1000ms; 
             text-align: justify; 
-            color:white; 
+            font-size:90%; 
+            line-height: 120%; 
+            color:black; 
+            overflow-y: auto; 
         }
+    
         .pgif{
             height:200px; 
             width:auto; 
@@ -281,14 +320,30 @@
             text-align: center; 
             padding:5px; 
             transition-duration: 500ms; 
-            font-family: monospace;
-            background-color:black; 
+            font-family: sans-serif;
+            font-weight:100;
+            font-stretch:ultra-condensed;
+            background-color:white; 
         }
+        ::-webkit-scrollbar { 
+            display:auto; 
+            width:5px; 
+            background:transparent; 
+        }
+    
+        ::-webkit-scrollbar-thumb{
+            background-color:rgba(0,0,0,0.2);
+            transition-duration: 1000ms; 
+        }
+        ::-webkit-scrollbar-thumb:window-inactive{
+            background-color:rgba(0,0,0,0);
+        }
+    
         h2,h3{
-            color:white; 
+            color:black; 
             font-family: inherit; 
             text-align: left;
-            font-size:120%; 
+            font-size:130%; 
             padding:0px; 
         }
         h3{
@@ -297,6 +352,7 @@
         p{
             color:inherit; 
             font-family:inherit; 
+            font-stretch:ultra-condensed;
             text-align:left; 
             padding-left:50px; 
         }
@@ -313,7 +369,7 @@
         textarea{
             background-color:rgba(0,0,0,0.10);
             width:100%; 
-            color:white; 
+            color:black; 
             border-style: none; 
             border-radius: 2px; 
             resize: none; 
@@ -323,7 +379,6 @@
             transition-duration: 500ms;
         }
         textarea:focus{
-            color:white;
             background-color:rgba(0,0,0,0.20); 
             transition-duration: 500ms; 
         }
@@ -347,41 +402,65 @@
 
     
     <div id="aboutbg">
-    <img src="resources/noise.gif" height="400px" width="600px"></img>
-</div>
+    <img src="resources/noise.gif" height="400px" width="600px"></img>    
+    </div>
 
+    
+    <div id="actionboxcontainer">
+        <span class="actionbox" onclick="dispEmail()" href="#">e-mail</span>
+        <span class="actionbox" onclick="window.location.href='https://www.linkedin.com/in/shammamahhossain/'">linkedin</span>
+        <span class="actionbox" onclick="window.location.href='./Hossain_CV.pdf'">cv</span>
+        <span class="actionbox" onclick="aboutBG()">background</span>
+    </div>
+    
     
     <div id="about">
         
         <div id="introbg"></div>
         
-        <div id="intro"><h2>Shammamah Hossain</h2>
-            <i>Welcome to my page! </br>Enjoy the colours, or <a onclick="dispEmail()" href="#">leave me an e-mail</a>.
-            </br>You can also <a href="./Hossain_CV.pdf">take a look at my CV</a>.
-</br>Find out more about the background <a onclick="aboutBG()" href="#">here</a>.</i>
+        <div id="intro"><h2><i>SHAMMAMAH HOSSAIN</i></h2>
+            <hr>
         </div>
 
         <div id="edu">
-            <h2>Education.</h2></br>
-        I currently attend McGill University in Montréal, Québec. I am pursuing a B.Sc. with a joint major of physics and computer science. 
+            <h2>Education.</h2>
+        I currently attend <a href="https://www.mcgill.ca">McGill University</a> in <a href="http://www.tourisme-montreal.org">Montréal, Québec</a>. I am pursuing a B.Sc. with a joint major of <a href="https://www.mcgill.ca/study/2012-2013/faculties/science/undergraduate/programs/bachelor-science-bsc-major-physics-and-computer-science">physics and computer science</a>. </br>
+    <h2>Research.</h2>
+    Over the summer of 2017, I will be working as a research assistant at McGill and contributing to the upgrade of the <a href="https://home.cern/about/experiments/atlas">ATLAS detector at CERN</a>.
         </div>
 
         <div id="ext">
             <h2>Extracurriculars.</h2>
             <h3>McGill Space Systems Group</h3>
-            I am a part of the MSSG as a member of the Canadian Satellite Design Challenge (CSDC) competition team. Currently, we are working on building a 3U CubeSat 
+            I am a part of the <a href="http://www.mcgillspace.com">MSSG</a> as a member of the <a href="http://www.csdcms.ca">Canadian Satellite Design Challenge (CSDC)</a> competition team. Currently, we are working on building a 3U CubeSat; our payload, or objective, for this year is to build a star tracker to be deployed into space. 
             <h3>RoboHacks (McGill Robotics)</h3>
-            I am the project manager for RoboHacks, which is a robotics hackathon hosted by McGill Robotics. 
+            For the 2016-2017 academic year, I was the project manager and financial officer for <a href="http://robohacks.io">RoboHacks</a>, which is a robotics hackathon hosted by <a href="http://mcgillrobotics.com">McGill Robotics</a>. 
         </div>
 
         <div id="int">
-            <h2>Interests.</h2></br>
-            I am interested in quantum computing, astrophysics, and high-energy particle physics. 
+            <h2>Interests.</h2>
+            <h3>Quantum computing</h3>
+            The development of a successful quantum computer would have massive implications on data processing, cryptography, and computation as we know it. I am currently a user on <a href="https://quantumexperience.ng.bluemix.net/">IBM Quantum Experience</a>, which is a wonderful tool for learning about quantum computation.
+            <h3>Particle physics</h3>
+            Fundamental particles comprise all matter that we know, and being able to understand them allows us to predict how the universe will behave -- consequently facilitating further development in science- and technology-related fields.  
+            <h3>Network structures</h3>
+            From a microscopic to a macroscopic scale, a vast amount of systems, processes, and phenomena are governed by the principles associated with network structures. <a href="http://blog.stephenwolfram.com/2015/12/what-is-spacetime-really/">This article</a> from the Wolfram blog even postulates that a network-related theory might be the elusive unified "theory of everything". 
+            <h3>Chaos theory</h3>
+            It's always incredible when order emerges out of chaos which is, essentially, the phenomenon of the entire universe existing. In particular, fractals are patterns that are recursively, but still dynamically generated -- a perfect visual example of, ironically, predictability arising directly from chaos.
         </div>
 
         <div id="prg">
-            <h2>Programming.</h2></br>            
-            I have several years of experience with Java. Additionally, I am self-taught in HTML/CSS and JavaScript (I wrote this page from scratch). I'm also comfortable with using Python for scientific computing.
+            <h2>etc.</h2>            
+            I willingly spend a lot of time <span title="automating every aspect of my life">programming</span>, and have lots of experience with scientific computing (particularly, data processing with Python and Mathematica). I also like making <span title="like this one">websites that look pretty to me.</span></br></br>
+    Sometimes I write stuff - <a href="http://graphitepublications.com/redefining-experiences-the-implications-of-augmented-reality/">here's</a> an article I wrote for Graphite Publications, and <a href="https://www.engadget.com/2015/09/09/show-me-how-to-use-the-face-book/">another one</a> for Engadget Public Access. 
+            I also like: 
+            <ul>
+                <li>typography (everyone should watch the documentary <a href="https://www.youtube.com/watch?v=wkoX0pEwSCw">
+"Helvetica"</a>)</li>
+                <li>crocheting</li>
+                <li><a href="http://www.iep.utm.edu/aestheti/">aesthetics</a></li>
+                <li><a href="http://badkidsjokes.tumblr.com">Bad Kids Jokes</a></li>
+            </ul>
         </div> 
 
     </div> 
@@ -389,7 +468,7 @@
 <div id="aboutprocessing">The gif above was made with <a href="https://processing.org">Processing 3</a>. Each pixel represents an integer, and the integers increase successively from left to right, then from top to bottom. The coloured pixels are prime numbers, and the colour of each pixel is determined randomly to be either red, green, or blue.
     </br>For more of my Processing code, please visit my <a href="https://github.com/shammamah/processing">Processing repository</a>.</div>
 
-`</div>
+</div>
 
 
     <div id = "email">
