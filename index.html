@@ -1,508 +1,128 @@
-
 <head> 
-<title>Sham </title>
-
+    <link rel="stylesheet" type="text/css" href="./resources/stylesheet.css"/>
     
-<!-- I spent way too long making the colours do the thing that they are doing right now --> 
-     
-<script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
-    function onLoad(){
-        setInterval(function bgc(){
-            var s = Math.floor(new Date()/100%150);
-            
-            if(s<50){
-                color="rgb("+(205+(s))+",205,"+(255-(s))+")";
-            }
-            else if(s<100 && s>=50){
-                color="rgb("+(255-(s-50))+","+(205+(s-50))+",205)";
-            }
-            else if(s<150 && s>=100){
-                color="rgb(205,"+(255-(s-100))+","+(205+(s-100))+")";
-            }
-            
-            document.getElementById("sidebar").style.borderColor=color;
-            
-        },0.01);
-        
-    }
+<script type="text/javascript" src="./resources/animations.js"></script>
+
+<body>
+    <div id="cover"></div>
     
-    function changeContent(s,a,b,c){
-        showIntro(0); 
-        document.getElementById(s).style.display="block";
-        document.getElementById(a).style.opacity="0"; 
-        document.getElementById(b).style.opacity="0"; 
-        document.getElementById(c).style.opacity="0";
-        document.getElementById("aboutprocessing").style.opacity="0"; 
-
-        setTimeout(function change(){
-            document.getElementById(s).style.opacity="1"; 
-            document.getElementById(a).style.display="none"; 
-            document.getElementById(b).style.display="none"; 
-            document.getElementById(c).style.display="none"; 
-            document.getElementById("aboutprocessing").style.display="none"; 
-        },500);
-        
-        document.getElementById("aboutbg").style.filter="blur(2px)"; 
-    }
-    
-    function aboutBG(){
-        showIntro(0); 
-        document.getElementById("edu").style.opacity="0"; 
-        document.getElementById("ext").style.opacity="0"; 
-        document.getElementById("int").style.opacity="0"; 
-        document.getElementById("prg").style.opacity="0"; 
-        document.getElementById("aboutbg").style.filter="none"; 
-        document.getElementById("aboutprocessing").style.display="block"; 
-        setTimeout(function showGifDesc(){
-            document.getElementById("aboutprocessing").style.opacity="1";  
-        },200);
-        setTimeout(function stopDisp(){
-            document.getElementById("edu").style.display="none"; 
-            document.getElementById("ext").style.display="none"; 
-            document.getElementById("int").style.display="none"; 
-            document.getElementById("prg").style.display="none";
-        },1200);
-    }
-    
-    function showIntro(i){
-        if(i==0){ 
-            document.getElementById("intro").style.opacity="0"; 
-            document.getElementById("introbg").style.opacity="0"; 
-            setTimeout(function hideIntro(){
-                document.getElementById("introbg").style.display="none";
-                document.getElementById("intro").style.display="none";
-            },1000);
-        }
-        else if(i==1){  
-            document.getElementById("intro").style.display="block";
-            document.getElementById("introbg").style.display="block"; 
-            document.getElementById("edu").style.opacity="0"; 
-            document.getElementById("ext").style.opacity="0"; 
-            document.getElementById("int").style.opacity="0"; 
-            document.getElementById("prg").style.opacity="0"; 
-            document.getElementById("aboutprocessing").style.opacity="0"; 
-            setTimeout(function showIntro(){
-                document.getElementById("intro").style.opacity="1";
-                document.getElementById("introbg").style.opacity="0.5";
-                document.getElementById("edu").style.display="none"; 
-                document.getElementById("ext").style.display="none"; 
-                document.getElementById("int").style.display="none"; 
-                document.getElementById("prg").style.display="none"; 
-                document.getElementById("aboutprocessing").style.display="none"; 
-            },500)
-           
-            document.getElementById("aboutbg").style.filter="none"; 
-
-        }
-    }
-
-    function dispEmail(){
-        document.getElementById("cover").style.zIndex = "1";
-        document.getElementById("cover").style.opacity="0.25"; 
-        document.getElementById("email").style.zIndex = "100";
-        document.getElementById("email").style.opacity = "100";
-        document.getElementById("mainContent").style.filter="blur(5px)";
-        document.getElementById("about").style.filter="blur(5px)";
-        document.getElementById("aboutbg").style.filter="blur(5px)";
-    }
-
-    function genEmail(){
-        var mailto = "mailto:shammamah.hossain@gmail.com?";
-        var subj = "subject="+document.getElementById("subj").value;
-        var msg = "&body="+document.getElementById("msg").value; 
-        
-        var toSend = mailto.concat(subj).concat(msg);
-  
-        window.location.href = toSend;
-        
-        hideEmail(); 
-    }
-    
-    function hideEmail(){     
-        document.getElementById("email").style.opacity = "0";
-        document.getElementById("email").style.zIndex = "-1";
-        document.getElementById("cover").style.zIndex = "-1";
-        document.getElementById("cover").style.opacity="0"; 
-        document.getElementById("mainContent").style.filter = "none"; 
-        document.getElementById("about").style.filter="none";
-        document.getElementById("aboutbg").style.filter="none";
-        document.getElementById("subj").value="";
-        document.getElementById("msg").value=""; 
-    }
-    
-    document.onkeydown = function(evt){
-        if(evt.keyCode == 27){
-            hideEmail(); 
-        }
-    }
-    
-</script>
-    
-<style>
-
-        #mainContent{
-            position:absolute;
-            height:auto; 
-            width:100%; 
-            filter:none; 
-            color:black;
-            transition-duration:500ms; 
-            width:100%; 
-        }
-        #intro{
-            position:fixed;
-            display:block; 
-            top:100px; 
-            width:400px;
-            height:300px;  
-            color:black; 
-            text-align: left;
-            padding:50px; 
-            z-index:101; 
-            transition-duration:1000ms; 
-        }
-        a{
-            color:#0061ff; 
-            text-decoration: none; 
-        }
-        a:visited{
-            color:#0061ff; 
-        }
-        #introbg{
-            position:fixed;
-            top:100px; 
-            width:500px;
-            height:400px;
-            text-align: left;
-            background-color:white; 
-            opacity:0.7; 
-            transition-duration:1000ms; 
-        }
-        #aboutbg{
-            position:fixed;
-            top:100px; 
-            width:500px;
-            margin-left:200px; 
-            height:400px; 
-            transition-duration:1000ms;
-            overflow:hidden; 
-            background-color: white; 
-            opacity:0.5; 
-            color:black; 
-        }
-        #about{
-            position:fixed;
-            top:100px; 
-            width:500px;
-            height:400px; 
-            margin-left:200px; 
-            transition-duration:1000ms;
-            border-style:solid;
-            border-color:black; 
-            border-width:thin; 
-            z-index:1; 
-        }
-        #aboutprocessing{
-            position:fixed; 
-            top:590px; 
-            left:225px; 
-            width:470px; 
-            height:100px; 
-            line-height:150%; 
-            color:black; 
-            font-size: 70%; 
-            text-align: justify; 
-            font-weight:100; 
-            opacity:0; 
-            display:none; 
-            transition:1000ms; 
-        }
-        #email{
-            text-align: left; 
-            transition-duration: 1000ms;
-            position: absolute; 
-            width:50%; 
-            left:25%;
-            top:10%; 
-            min-width:400px; 
-            opacity:0; 
-            font-family: Helvetica; 
-            font-weight: 100; 
-            color:black; 
-            font-size: 80%; 
-            z-index:-1; 
-        }       
-        #cover{
-            transition-duration: 500ms; 
-            background-color: white; 
-            height:100%; 
-            width: 100%; 
-            opacity:0; 
-            z-index:-1; 
-            position:absolute; 
-            margin:0px; 
-            left:0px; 
-            top:0px;
-            padding:0px; 
-        }
-        #sidebar{
-            position: fixed; 
-            color:white; 
-            height:auto; 
-            width:auto; 
-            top:165px; 
-            left:60px; 
-            padding:15px;
-            text-align: right;
-            border-style:solid; 
-            border-width:thin; 
-        }
-        .sidebarItem{
-            padding-top:10px; 
-            padding-bottom:10px; 
-            padding-right,padding-left:15px;
-            width:auto; 
-            position:static;
-        }
-        .sidebarItem img{
-            height:25px; 
-            width:25px; 
-        }
-        #actionboxcontainer{
-            position:fixed;
-            top:520px; 
-            width:550px;
-            height:auto; 
-            margin-left:176px; 
-        }
-        .actionbox{
-            display:inline-block;
-            border-style:solid; 
-            position:static; 
-            border-width: thin; 
-            border-color: black; 
-            padding:10px;
-            color:#1D1D1D;
-            height:auto; 
-            width:85px; 
-            margin:10px; 
-            font-variant: small-caps;
-            transition-duration: 1000ms; 
-        }
-        .actionbox:hover{
-            border-color:#DDDDDD; 
-            color:black;
-        }
-        
-        #edu,#ext,#int,#prg {
-            opacity:0; 
-            position:fixed; 
-            width:375px;
-            height:300px; 
-            top:150px; 
-            left:225px;
-            padding-left:50px; 
-            padding-right:20px;
-            z-index:1001; 
-            display:none; 
-            transition-duration: 1000ms; 
-            text-align: justify; 
-            font-size:90%; 
-            line-height: 120%; 
-            color:black; 
-            overflow-y: auto; 
-        }
-    
-        .pgif{
-            height:200px; 
-            width:auto; 
-            position:static;
-            padding:10px; 
-            float:left; 
-            transition-duration: 1000ms; 
-        }
-        body{
-            text-align: center; 
-            padding:5px; 
-            transition-duration: 500ms; 
-            font-family: Helvetica,sans-serif;
-            font-weight:100;
-            font-stretch:ultra-condensed;
-            background-color:white; 
-        }
-        ::-webkit-scrollbar { 
-            display:auto; 
-            width:5px; 
-            background:transparent; 
-        }
-    
-        ::-webkit-scrollbar-thumb{
-            background-color:rgba(0,0,0,0.2);
-            transition-duration: 1000ms; 
-        }
-        ::-webkit-scrollbar-thumb:window-inactive{
-            background-color:rgba(0,0,0,0);
-        }
-    
-        h2,h3{
-            color:black; 
-            font-family: inherit; 
-            text-align: left;
-            font-size:130%; 
-            padding:0px; 
-        }
-        h3{
-            font-size:105%; 
-        }
-        p{
-            color:inherit; 
-            font-family:inherit; 
-            font-stretch:ultra-condensed;
-            text-align:left; 
-            padding-left:50px; 
-        }
-        button{
-            background-color: black; 
-            color: white; 
-            border-style:none; 
-            border-radius: 3px;
-            border-style: none;
-            position: inherit; 
-            right:0px; 
-            opacity:0.35; 
-        }
-        textarea{
-            background-color:rgba(0,0,0,0.10);
-            width:100%; 
-            color:black; 
-            border-style: none; 
-            border-radius: 2px; 
-            resize: none; 
-            font-weight: 100;
-            margin:1px; 
-            padding:5px; 
-            transition-duration: 500ms;
-        }
-        textarea:focus{
-            background-color:rgba(0,0,0,0.20); 
-            transition-duration: 500ms; 
-        }
- 
-    </style>
-
-</head>
-
-
-<body onload="onLoad()">
-    <div id = "cover" onclick="hideEmail()"></div>
-    <div id="mainContent"> 
-
-        <div id="sidebar">
-            <div class="sidebarItem"><a href="#" onclick="showIntro(1)"><img src="./resources/home.png"></a></div>
-            <div class="sidebarItem"><a href="#" onclick="changeContent('edu','ext','int','prg')"><img src="./resources/school.png"></a></div>
-            <div class="sidebarItem"><a href="#" onclick="changeContent('ext','edu','int','prg')"><img src="./resources/extracurriculars.png"></a></div>
-            <div class="sidebarItem"><a href="#" onclick="changeContent('int','edu','ext','prg')"><img src="./resources/interests.png"></a></div>
-            <div class="sidebarItem"><a href="#" onclick="changeContent('prg','edu','ext','int')"><img src="./resources/programming.png"></a></div>
-        </div>
-
-    
-    <div id="aboutbg">
-    <img src="resources/noise.gif" height="400px" width="600px"></img>    
-    </div>
-
-    
-    <div id="actionboxcontainer">
-        <span class="actionbox" onclick="dispEmail()" href="#">e-mail</span>
-        <span class="actionbox" onclick="window.location.href='https://www.linkedin.com/in/shammamahhossain/'">linkedin</span>
-        <span class="actionbox" onclick="window.location.href='./Hossain_CV.pdf'">cv</span>
-        <span class="actionbox" onclick="aboutBG()">background</span>
-    </div>
-    
-    
-    <div id="about">
-        
-        <div id="introbg"></div>
-        
-        <div id="intro"><h2><i>SHAMMAMAH HOSSAIN</i></h2>
-            <hr>
-        </div>
-
-        <div id="edu">
-            <h2>Education.</h2>
-        I currently attend <a href="https://www.mcgill.ca">McGill University</a> in <a href="http://www.tourisme-montreal.org">Montréal, Québec</a>. I am pursuing a B.Sc. with a joint major of <a href="https://www.mcgill.ca/study/2012-2013/faculties/science/undergraduate/programs/bachelor-science-bsc-major-physics-and-computer-science">physics and computer science</a>. </br>
-    <h2>Research.</h2>
-    Over the summer of 2017, I will be working as a research assistant at McGill and contributing to the upgrade of the <a href="https://home.cern/about/experiments/atlas">ATLAS detector at CERN</a>. </br>
-    In particular, I will be working on implementing an optimal filter on an <a href="https://www.altera.com/products/fpga/overview.html">FPGA</a> (in <a href="https://en.wikipedia.org/wiki/VHDL">VHDL</a>), as well as performing some analysis on ATLAS data using the <a href="https://root.cern.ch">ROOT</a> framework.  
-        </div>
-
-        <div id="ext">
-            <h2>Extracurriculars.</h2>
-            <h3>McGill Space Systems Group</h3>
-            I am a part of the <a href="http://www.mcgillspace.com">MSSG</a> as a member of the <a href="http://www.csdcms.ca">Canadian Satellite Design Challenge (CSDC)</a> competition team. Currently, we are working on building a 3U CubeSat; our payload, or objective, for this year is to build a star tracker to be deployed into space. 
-            <h3>RoboHacks (McGill Robotics)</h3>
-            For the 2016-2017 academic year, I was the project manager and financial officer for <a href="http://robohacks.io">RoboHacks</a>, which is a robotics hackathon hosted by <a href="http://mcgillrobotics.com">McGill Robotics</a>. 
-        </div>
-
-        <div id="int">
-            <h2>Interests.</h2>
-            <h3>Quantum computing</h3>
-            The development of a successful quantum computer would have massive implications on data processing, cryptography, and computation as we know it. I am currently a user on <a href="https://quantumexperience.ng.bluemix.net/">IBM Quantum Experience</a>, which is a wonderful tool for learning about quantum computation.
-            <h3>Particle physics</h3>
-            Fundamental particles comprise all matter that we know, and being able to understand them allows us to predict how the universe will behave -- consequently facilitating further development in science- and technology-related fields.  
-            <h3>Network structures</h3>
-            From a microscopic to a macroscopic scale, a vast amount of systems, processes, and phenomena are governed by the principles associated with network structures. <a href="http://blog.stephenwolfram.com/2015/12/what-is-spacetime-really/">This article</a> from the Wolfram blog even postulates that a network-related theory might be the elusive unified "theory of everything". 
-            <h3>Chaos theory</h3>
-            It's always incredible when order emerges out of chaos which is, essentially, the phenomenon of the entire universe existing. In particular, fractals are patterns that are recursively, but still dynamically generated -- a perfect visual example of, ironically, predictability arising directly from chaos.
-        </div>
-
-        <div id="prg">
-            <h2>etc.</h2>            
-            I willingly spend a lot of time <span title="automating every aspect of my life">programming</span>, and have considerable experience with scientific computing (particularly, data processing with <a href="https://root.cern.ch">ROOT</a>, Python and Mathematica). I also like making <span title="like this one">websites that look pretty to me.</span></br></br>
-    Sometimes I write stuff - <a href="http://graphitepublications.com/redefining-experiences-the-implications-of-augmented-reality/">here's</a> an article I wrote for Graphite Publications, and <a href="https://www.engadget.com/2015/09/09/show-me-how-to-use-the-face-book/">another one</a> for Engadget Public Access. 
-            I also like: 
-            <ul>
-                <li>typography (see: <a href="https://www.youtube.com/watch?v=wkoX0pEwSCw">
-"Helvetica"</a>)</li>
-                <li><a href="http://www.iep.utm.edu/aestheti/">aesthetics</a></li>
-                <li><a href="http://badkidsjokes.tumblr.com">Bad Kids Jokes</a></li>
-            </ul>
-        </div> 
-
-    </div> 
-    
-<div id="aboutprocessing">The gif above was made with <a href="https://processing.org">Processing 3</a>. Each pixel represents an integer, and the integers increase successively from left to right, then from top to bottom. The coloured pixels are prime numbers, and the colour of each pixel is determined randomly to be either red, green, or blue.
-    </br>For more of my Processing code, please visit my <a href="https://github.com/shammamah/processing">Processing repository</a>.</div>
-
-</div>
-
-
+<!-- EMAIL --> 
     <div id = "email">
         <textarea id="subj" value="subject" placeholder="Subject" rows="1"/></textarea></br>
         <textarea id="msg" rows="10" value="message" placeholder="Message"/></textarea></br></br>
-(press ESC or click outside to close)
         <button id="genEmail" onclick="genEmail()">Send</button>
     </div>
-</div>
+
+<!-- SIDEBAR -->     
+    <div id = "sidebar">
+        <div class="sidebar-item" name="h">
+            <div class="sidebar-item-name">home</div>
+            <img src="./resources/images/pullouthome.png" height=25px></img>
+        </div>
+        <div class="sidebar-item" onclick="window.location='http://www.linkedin.com/in/shammamahhossain'">
+            <div class="sidebar-item-name">linkedin</div>
+            <img src="./resources/images/pulloutli.png" height=25px></img> 
+        </div>
+        <div class="sidebar-item" onclick="window.location='./resources/Hossain_CV.pdf'">
+            <div class="sidebar-item-name">cv</div>
+            <img src="./resources/images/pulloutcv.png" height=25px></img> 
+        </div>
+        <div class="sidebar-item" onclick="dispEmail()">
+            <div class="sidebar-item-name">e-mail me</div>
+            <img src="./resources/images/pulloutemail.png" height=25px></img>
+        </div>
+        <div class="sidebar-item" name="r">
+            <div class="sidebar-item-name">research</div>
+            <img src="./resources/images/pulloutresearch.png" height=25px></img>
+        </div>
+    <div class="sidebar-item" name="i" >
+            <div class="sidebar-item-name">interests</div>
+            <img src="./resources/images/pulloutinterests.png" height=25px></img>
+        </div>
+        <div class="sidebar-item" name="e">
+            <div class="sidebar-item-name">extracurriculars</div>
+            <img src="./resources/images/pulloutextra.png" height=25px></img>
+        </div>
+        <div class="sidebar-item" name="code">
+            <div class="sidebar-item-name">code</div>
+            <img src="./resources/images/pulloutcode.png" height=25px></img>
+        </div>
+        <div class="sidebar-item" name="etc">                
+            <div class="sidebar-item-name">etc.</div>
+            <img src="./resources/images/pulloutetc.png" height=25px></img>
+        </div>
+    </div>
 
 
-<!-- Start of StatCounter Code for Default Guide -->
-<script type="text/javascript">
-var sc_project=11363722; 
-var sc_invisible=1; 
-var sc_security="53c71276"; 
-var scJsHost = (("https:" == document.location.protocol) ?
-"https://secure." : "http://www.");
-document.write("<sc"+"ript type='text/javascript' src='" +
-scJsHost+
-"statcounter.com/counter/counter.js'></"+"script>");
-</script>
-<noscript><div class="statcounter"><a title="web stats"
-href="http://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="//c.statcounter.com/11363722/0/53c71276/1/" alt="web
-stats"></a></div></noscript>
-<!-- End of StatCounter Code for Default Guide -->
+<!-- MAIN CONTENT --> 
+    <div id="main">
+        
+        <div id="window">
+        <div id="wrap">
+        <div id="intro">
+            <h1>Shammamah Hossain</h1>
+            <p>Welcome to my personal website!</p>
+            <p>I am pursuing a B.Sc. with a joint major of <a href="https://www.mcgill.ca/study/2012-2013/faculties/science/undergraduate/programs/bachelor-science-bsc-major-physics-and-computer-science">physics and computer science</a> at <a href="https://www.mcgill.ca">McGill University</a> in <a href="http://www.tourisme-montreal.org">Montréal, Québec</a>.</p>
+        </div>
+            
+        <div id="research">
+            <h2>research</h2>
+            Over the summer of 2017, I worked as a research assistant at McGill, contributing to the upgrade of the <a href="https://home.cern/about/experiments/atlas">ATLAS detector at CERN</a>. In particular, I worked on implementing an optimal filter on an <a href="https://www.altera.com/products/fpga/overview.html">FPGA</a> (in <a href="https://en.wikipedia.org/wiki/VHDL">VHDL</a>), as well as performing some analysis on ATLAS data using the <a href="https://root.cern.ch">ROOT</a> framework. I also authored a scientific poster outlining the design process and performance/efficiency of my optimal filter.  </br>
+            I hope to present my project at the <a href="http://www.cupc.ca">Canadian Undergraduate Physics Conference</a> in October 2017. 
+        </div>
 
+        <div id="interests">
+            <h2>interests</h2>
+            In my spare time, I enjoy reading about philosophy (existentialism, absurdism, theory of mathematics, and aesthetics) and mathematics (game theory and topology). I also have two main areas of research I would like to pursue in the future. 
+            <h3>Quantum computing</h3>
+            The development of a successful quantum computer would have massive implications on data processing, cryptography, and computation as we know it. Due to my interest in physics, I am most interested in qubit encoding and other closely related aspects of quantum computation. 
+            <h3>Data processing and data science</h3>
+            The information age requires sophisticated ways of extracting meaningful information from immense volumes of data. I am interested in the development of algorithms that are able to do so efficiently and effectively. 
+            <!--
+            <h3>Particle physics</h3>
+            Fundamental particles comprise all matter that we know, and being able to understand them allows us to predict how the universe will behave -- consequently facilitating further development in science- and technology-related fields.  
+            <h3>Chaos theory</h3>
+            It's always incredible when order emerges out of chaos which is, essentially, the phenomenon of the entire universe existing. In particular, fractals are patterns that are recursively, but still dynamically generated -- a perfect visual example of, ironically, predictability arising directly from chaos. -->
+        </div>
+
+        <div id="extracurriculars">
+            <h2>extracurriculars</h2>
+           <h3>McGill Space Systems Group</h3>
+            I am a part of the <a href="http://www.mcgillspace.com">MSSG</a> as a member of the <a href="http://www.csdcms.ca">Canadian Satellite Design Challenge (CSDC)</a> competition team. Currently, we are working on building a 3U CubeSat; our payload, or objective, for this year is to build a star tracker to be deployed into space.</br>
+        My role on the team is to act as a liaison between the communications subsystem and the software subsystem. We will be using <a href="http://www.kubos.com">Kubos</a> to implement the processing required by the communications subsystem. 
+        </div>
+        
+        <div id="code">
+            <h2>code</h2>
+            <h3>GitHub</h3>
+            My GitHub account name is <a href="http://github.com/shammamah">shammamah</a>. It contains the following repositories: 
+            <ul>
+                <li><i>PHYS339</i> - Python code I've written for data processing in a lab course</li>
+                <li><i>misc</i> - silly code I've written as a result of being bored or wanting to automate tasks</li>
+                <li><i>processing</i> - several simple projects I've created with Processing 3</li>
+                <li><i>shammamah.github.io</i> - the repository for this website</li>
+            </ul>
+            <h3><a href="http://twitter.com/commandsbysham">@commandsbysham</a></h3>
+            I created a Twitter bot that goes through the past 100 Bash commands I've used, picks one at random, and tweets it every time I start a new session. I'm still working on understanding how to build a character profile from this data, other than the following: 
+            <h3>Vim vs. Emacs</h3>
+            <span title="I use Vim if I'm writing a very short script or changing, like, ONE word in a text document. Maybe once in a blue moon. So sue me."> Emacs. </span>
+            
+            <h3>Recent projects</h3>
+            For a description of my most recent project, please refer to the "..." icon in the sidebar. 
+        </div>
+
+        <div id="etc">
+            <h2>monopoly</h2>
+            <img src="./resources/images/output.png" width="300px"></img></br></br>
+            The script <a href="https://github.com/shammamah/misc/blob/master/monopoly.py"><i>monopoly.py</i></a> can be found in the <i>misc</i> repository mentioned in my "code" section, but it's my favourite script in that repository, so it gets its own section. It essentially simulates a very rudimentary <a href="https://www.hasbro.com/en-us/brands/monopoly">Monopoly game</a>. The positions and colours of all properties in the game, as well as railroads and utilities, are specified. The positions of Chance squares and Community Chest squares are also specified, and decks of these cards are generated and drawn from if the appropriate square is landed on. </br></br>
+            A certain number of games are played with a certain number of dice rolls each (I haven't been able to find the average length of a Monopoly game in dice rolls), which generates data about the frequency with which each colour of property is landed on. The position on the board is affected by dice rolls, the "Go to Jail" square on the board, and certain Chance and Community Chest cards. The script can optionally generate plots of this data, and a simple printed version of a Monopoly board with each individual square containing the number of times they were landed on. Sample output for the code can be found above.</br></br>
+            Please use these results for good, not evil. 
+</br></br>  
+        
+        </div>
+        
+        </div>
+        </div>
 </body>
-

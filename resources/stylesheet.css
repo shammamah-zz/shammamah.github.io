@@ -1,0 +1,169 @@
+body{
+    background-color: rgb(60,60,60); 
+    font-family:Arial;
+    font-size:14px; 
+    width:80%; 
+    height:100%; 
+    color:white;
+}
+
+#main{
+    position:absolute;
+    top:50px;
+    left:135px; 
+    height:auto; 
+    width:300px; 
+    padding:20px; 
+    overflow:hidden; 
+}
+
+#wrap{
+    position:static; 
+    width:2500; 
+    height:auto; 
+}
+
+a{
+    color:rgb(255,40,40);
+    text-decoration: none; 
+    transition-duration:500ms; 
+}
+a:hover{
+    color:rgb(255,255,255); 
+}
+
+#sidebar{
+    position:fixed; 
+    width:20px; 
+    height:auto; 
+    left:0px; 
+    margin-top:50px; 
+    z-index:1000; 
+    font-family:inherit; 
+}
+.sidebar-item{
+    position:static; 
+    height:15px; 
+    width:100px; 
+    margin-left:20px; 
+    padding-right:0px; 
+    padding-bottom:25px; 
+    transition-duration:1000ms; 
+}
+.sidebar-item:hover{
+    margin-left:-50px;
+}
+.sidebar-item:hover .sidebar-item-name{
+    opacity:1; 
+}
+.sidebar-item-name{
+    font-variant:small-caps; 
+    opacity:0;
+    width:75%; 
+    color:white;
+    padding-left:70px; 
+    margin-bottom:-20px; 
+    text-align: left; 
+    font-size:16px;
+    transition-duration:1500ms; 
+}
+
+#cover{
+    position:fixed; 
+    top:0px; 
+    bottom:0; 
+    left:0px; 
+    width:100%; 
+    height:100%; 
+    background-color:black;
+    opacity:0; 
+    z-index:-1; 
+    transition-duration:1000ms; 
+}
+
+#research, #interests, #extracurriculars, #etc, #intro, #code{
+    float:left; 
+    position:relative; 
+    width:300px; 
+    margin-left:60px; 
+    font-family:Arial;
+    line-height:150%; 
+    font-size:90%; 
+    transition-duration:1000ms; 
+}
+#intro{
+    position:relative;
+    padding-right:50px;
+    padding-bottom:50px; 
+    left:-10px; 
+    height:100px;
+    width:250px; 
+    font-size:100%; 
+}
+#intro h1{
+    text-align:left;
+    margin-left: -10px; 
+    line-height: 130%; 
+}
+
+h2{
+    text-align: left; 
+    font-size:200%;
+    font-variant: small-caps; 
+    padding-right:50px;
+}
+
+#email{
+    text-align: left; 
+    transition-duration: 500ms;
+    position: fixed; 
+    left:25%;
+    top:10%; 
+    width:400px; 
+    height:auto; 
+    opacity:0; 
+    font-weight: 100; 
+    color:grey; 
+    font-size:40%; 
+    z-index:-1; 
+    font-family:inherit;
+} 
+textarea{
+    background-color:rgba(0,0,0,0.20);
+    border-color:white;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 2px; 
+    width:100%; 
+    color:white; 
+    resize: none; 
+    font-weight:200;
+    font-size:200%; 
+    margin:1px; 
+    padding:5px; 
+    transition-duration: 500ms;
+    font-family:inherit;
+}
+textarea:focus{
+    background-color:rgba(255,255,255,0.5); 
+    transition-duration: 500ms; 
+}
+button{
+    position:relative;
+    background-color:rgba(0,0,0,0); 
+    font-family:inherit; 
+    color:white; 
+    border-style:solid;
+    border-color:rgba(255,255,255,0.5);
+    font-weight:100; 
+    right:-360px;
+    border-width: 1px; 
+    border-radius: 3px;
+    font-size:170%; 
+    opacity:0.9;
+    transition-duration: 500ms; 
+}
+button:hover{
+    background-color:rgba(0,0,0,0.3); 
+    color:white; 
+}
