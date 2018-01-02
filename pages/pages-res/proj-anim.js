@@ -28,6 +28,11 @@ function projInfo(s) {
         document.getElementById("project-name").innerHTML="<a href= 'https://github.com/shammamah/misc/blob/master/autotweetcmd.sh' style='font-size:18pt'>@commandsbysham</a>"; 
         document.getElementById("project-desc").innerHTML="A silly Twitter bot that goes through the past 100 Bash commands I've used, picks one at random, and tweets it every time I start a new session. Check it out at <a href='http://twitter.com/commandsbysham'>@commandsbysham</a> on Twitter!"; 
     }
+    else if(s === "noi"){
+        document.getElementById("project-view").innerHTML="<img src = './pages-media/noise300.gif' width = 300px'>";
+        document.getElementById("project-name").innerHTML="<a href= 'https://github.com/shammamah/processing/tree/master/Noise'>noise</a>"; 
+        document.getElementById("project-desc").innerHTML="A festive visualization of prime numbers. Each pixel on the grid corresponds to an integer, counting left-to-right, top-to-bottom. The pixel is only coloured if it represents a prime number, and the colour is randomly assigned to be red, green, or blue. It's interesting to note the density of the coloured pixels as one looks from top-left to bottom-right."; 
+    }
     
     setTimeout( ( function () { 
         document.getElementById("project-info").style.opacity="1"; 
