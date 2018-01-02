@@ -41,6 +41,7 @@ body{
     position:absolute; 
     top:100px; 
     left:50px; 
+    margin-bottom:50px; 
     transition-duration:400ms; 
     font-weight:300; 
     font-stretch: ultra-expanded;
