@@ -1,0 +1,72 @@
+<head>
+    <title>(under construction!)</title>
+    <link rel="stylesheet" type="text/css" href="./res/stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./res/anim.js"></script>
+    <script>window.onload="loadMain()"</script>
+</head>
+
+
+<body>
+    <div id = "info">
+        <div id = "infohead">shammamah hossain</div>  
+            <div id = "back"><a href="#" onclick="loadMain()">&#8592; back</a></div>
+
+        <div class = "infobox">
+            <div class = "infobox-head">about</div>
+            <div class = "infobox-content">
+            Hi there! I'm a student pursuing a B.Sc. with a joint major of <a href="https://www.mcgill.ca/study/2012-2013/faculties/science/undergraduate/programs/bachelor-science-bsc-major-physics-and-computer-science">physics and computer science</a> at <a href="https://www.mcgill.ca">McGill University</a> in <a href="http://www.tourisme-montreal.org">Montréal, Québec</a>.
+            </div>
+        </div>
+        
+        
+        <div class = "infobox"> 
+            <div class = "infobox-head">extracurriculars</div>
+            <div class = "infobox-content">
+                I'm currently a part of the <a href="http://www.mcgillspace.com/#!/">McGill Space Systems Group (MSSG)</a> as a member of the competition team. My role is to act as a liaison between the software and communications subsystems. 
+            </div>
+        </div>
+        
+        <div class = "infobox">
+            <div class = "infobox-head">research</div>
+            <div class = "infobox-content">
+                Over the summer of 2017, I was a research assistant as part of the <a href = "http://www.hep.physics.mcgill.ca/ATLAS/wiki/index.php?title=Main_Page">ATLAS group at McGill</a>. My project was a contribution to the upgrade of the <a href = "https://home.cern/about/experiments/atlas">ATLAS detector at the CERN supercollider</a>. <br><br>
+            In particular, I worked on implementing an optimal filter on an <a href = "https://www.altera.com/products/fpga/overview.html">FPGA</a> using <a href = "https://en.wikipedia.org/wiki/VHDL">VHDL</a>, as well as some analysis on ATLAS data using CERN's <a href = "https://root.cern.ch/">ROOT</a> framework. <br><br>
+                I authored a scientific poster with the results of my research, and gave a talk at the 53rd <a href = "http://cupc.ca/">Canadian Undergraduate Physics Conference</a>.
+            </div>
+        </div>
+        
+        
+        <div class = "infobox">
+            <div class = "infobox-head">interests</div>
+            <div class = "infobox-content">
+                Thus far, the most interesting fields of study that I have come across have been: 
+                <ul>
+                    <li>quantum computing (algorithm development, qubit encoding)</li>
+                    <li>cryptography</li>
+                    <li>machine learning and artificial intelligence</li>
+                    <li>data science</li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        <div class = "infobox">
+            <div class = "infobox-head">code</div>
+            <div class = "infobox-body">
+                My github username is <a href = "http://github.com/shammamah" >shammamah</a>. There you can find the following repositories: 
+                <ul>
+                    <li><i>PHYS339</i> - code written for a Python-heavy experimental methods lab course</li>
+                    <li><i>shammamah.github.io</i> - the repository for this website </li>
+                    <li><i>misc</i> - some silly independent projects, mostly using Bash or Python to automate things</li>
+                    <li><i>Processing</i> - several projects created using Processing 3. </li>
+                </ul>
+                
+                For my favourite (and most recent) personal projects, please see my <a href="./pages/projects.html">projects</a> page. 
+                </div>
+        </div>
+    </div>
+    
+    <div id = "bg"></div>
+    
+</body>

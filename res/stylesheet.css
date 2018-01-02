@@ -5,10 +5,8 @@ body{
 }
 
 #bg{ 
-    opacity:0; 
-    display:none; 
+    opacity:0.5; 
     position:fixed;
-    z-index:-1; 
     height:100%; 
     width:100%; 
     top:0px; 
@@ -38,9 +36,11 @@ body{
 }
 
 #info{
-    z-index:-1; 
-    display:none; 
     opacity:0; 
+    z-index:1; 
+    position:absolute; 
+    top:100px; 
+    left:50px; 
     transition-duration:400ms; 
     font-weight:300; 
     font-stretch: ultra-expanded;
@@ -80,16 +80,19 @@ body{
     color:rgb(0,0,255) !important; 
 }
 #infohead{
-    position:static; 
-    opacity: inherit;
-    transition-duration:inherit; 
-    left:0px; 
+    position:absolute; 
+    opacity: 0;
+    z-index:10; 
+    left:10px; 
     top:0px; 
     padding:10px; 
+    padding-top:25px; 
     font-weight: 500; 
     font-variant:small-caps; 
     font-size:40pt;
+    font-family:inherit; 
     letter-spacing:10px; 
+    transition-duration:200ms; 
 }
 
 #intro a, #info a{ 
@@ -103,6 +106,7 @@ body{
 }
 
 #head{
+    z-index:10; 
     height:100px; 
     font-weight: 500; 
     font-size:40pt;
@@ -112,12 +116,29 @@ body{
     background-size: 750px 100px; 
 }
 
-#back{
+#nav{
     position:sticky; 
-    top:10px; 
-    left:10px; 
-    font-size: 12pt; 
+    top:100px; 
+    left:20px; 
+    opacity:0; 
+    font-size: 13pt; 
+    font-variant: small-caps; 
+    font-weight:300; 
+    text-align: right; 
+    display: table; 
+    z-index:10; 
+    transition-duration:200ms; 
 }
+
+#nav a{
+    text-decoration: none; 
+    color:rgb(150,150,150); 
+    transition-duration:1000ms; 
+}
+#nav a:hover{
+    color:rgb(0,0,255); 
+}
+
 
 .line{
     background-color:rgb(150,150,150); 

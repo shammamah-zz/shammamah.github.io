@@ -1,14 +1,12 @@
 body{
-    opacity:0; 
     background-color:white; 
-    transition-duration:500ms; 
+    transition-duration:1000ms; 
     font-family: sans-serif; 
 }
 
 #bg{ 
-    opacity:0; 
+    opacity:0.5; 
     position:fixed;
-    z-index:-1; 
     height:100%; 
     width:100%; 
     top:0px; 
@@ -17,35 +15,44 @@ body{
     transition-duration: 750ms; 
 }
 
-
-
-#back, #close-project-view{
+#nav, #close-project-view{
     position:sticky; 
     top:100px; 
-    left:15px; 
-    font-size: 12pt;
-    font-weight: 300; 
+    left:20px; 
+    font-size: 13pt; 
+    font-variant: small-caps; 
+    font-weight:300; 
+    text-align: right; 
 }
 #close-project-view{
     top:10px; 
     text-align: right; 
     padding-right:10px; 
     padding-top:5px; 
+    font-weight: 500; 
 }
-#back a, #close-project-view a{
+#nav{
+    display:table; 
+    width:auto; 
+    z-index:10; 
+    opacity:0; 
+    transition-duration:200ms; 
+}
+#nav a, #close-project-view a{
     text-decoration: none; 
     color:rgb(150,150,150); 
     transition-duration:1000ms; 
 }
-#back a:hover, #close-project-view a:hover{
+#nav a:hover, #close-project-view a:hover{
     color:rgb(0,0,255); 
 }
 
-#head{
-    position:static; 
-    opacity: inherit;
-    transition-duration:inherit; 
-    left:0px; 
+#projhead{
+    position:absolute; 
+    opacity: 0;
+    z-index:10; 
+    transition-duration:200ms; 
+    left:10px; 
     top:0px; 
     padding:10px; 
     padding-top:25px; 
@@ -58,16 +65,20 @@ body{
 
 #project-wrap{
     width:90%; 
-    margin-left:10%; 
-    margin-right:10%; 
-    transition-duration:200ms; 
+    position:absolute; 
+    left:100px; 
+    top:100px; 
+    z-index:1; 
+    opacity:0; 
+    transition-duration:500ms; 
 }
 
 .project-box{
     width:250px; 
     height:250px; 
     margin:10px; 
-    float:left; 
+    display:inline-block; 
+    opacity:inherit; 
     border-style:solid; 
     border-width:thin; 
 }
@@ -85,13 +96,13 @@ body{
 }
 
 #project-info{
-    width:600px; 
-    left:75px; 
+    width:700px; 
     position:absolute; 
+    left:100px; 
+    top:110px; 
     border-style:solid; 
     border-width: thin;
     display:none; 
-    z-index:-1; 
     opacity:0; 
     transition-duration:1000ms; 
 }
@@ -102,11 +113,11 @@ body{
     padding:25px;
     float:left; 
     opacity:inherit; 
-    z-index: inherit
+    z-index: inherit;
 }
 
 #project-desc{
-    width:200px; 
+    width:300px; 
     float:left; 
     padding-top:25px;
     font-size: 10pt;
@@ -124,4 +135,25 @@ body{
 #project-name a, #project-name a:visited, #project-desc a, #project-desc a:visited{
     text-decoration: none;
     color:rgb(0,0,255);
+}
+
+.line{
+    background-color:rgb(150,150,150); 
+    width:100px;
+    height:2px; 
+    margin-bottom:3px;
+}
+
+.dot{
+    background-color:black; 
+    width:2px;
+    height:2px; 
+    margin-bottom:3px;   
+}
+
+span{
+    transition-duration: inherit; 
+    opacity: inherit; 
+    display:inline-block;
+    line-height: 100px; 
 }

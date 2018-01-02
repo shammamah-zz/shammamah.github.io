@@ -1,7 +1,3 @@
-function loadProjPage() { 
-    document.body.style.opacity="1"; 
-}
-
 function turnBackMeow() { 
     document.body.style.opacity="0"; 
     setTimeout( ( function () { 
@@ -15,6 +11,7 @@ function projInfo(s) {
     document.getElementById("project-view").zIndex="1"; 
     document.getElementById("project-info").style.zIndex="1"; 
     document.getElementById("project-wrap").style.filter="blur(10px)"; 
+    document.getElementById("bg").style.filter="blur(10px)"; 
     if(s === "pal"){
         //document.getElementById("project-view").innerHTML="<canvas data-processing-sources = './projects-code/pointsAndLines.pde' style = width:300px; height:300px; opacity:1; z-index:1000'>Still under construction, sorry!</canvas>";
         document.getElementById("project-view").innerHTML="<img src = './pages-media/pal2.gif' height='300px' width='300px'>";
@@ -40,6 +37,7 @@ function projInfo(s) {
 function hideProjInfo() {     
     document.getElementById("project-info").style.opacity="0";
     document.getElementById("project-wrap").style.filter="none"; 
+    document.getElementById("bg").style.filter="none"; 
     
     setTimeout( ( function () {       
         document.getElementById("project-info").style.display="none"; 
