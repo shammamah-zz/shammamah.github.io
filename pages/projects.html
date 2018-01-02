@@ -1,0 +1,43 @@
+<head>
+    <title>Shammamah Hossain - projects</title>
+    <link rel="stylesheet" type="text/css" href="./pages-res/pages-stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./pages-res/pages-anim.js"></script>
+    <script>
+    window.onload = (function () {
+        document.getElementById("bg").style.opacity="0.5"; 
+        document.body.style.opacity="1"; 
+    }); 
+    </script>
+    <script type="text/javascript" src="./projects-code/processing.js"></script>
+
+</head>
+
+<body>
+    <div id = "bg"></div>
+    
+    <div id = "head">projects</div>
+    <div id = "back"><a href="#" onclick="turnBackMeow()">&#8592; back</a></div>
+
+    
+    <div id = "project-wrap">
+        <div class = "project-box" onClick="projInfo('pal')">
+            <img src = "pages-media/pal3.gif">
+        </div>
+        
+        <div class = "project-box" onClick="projInfo('mon')">
+            <img src = "pages-media/monopoly.png">
+        </div>
+        
+        <div class = "project-box" onClick="projInfo('twe')">
+            <img src = "pages-media/tweetbot.png">
+        </div>
+    </div>
+    
+    <div id = "project-info">
+            <div id = "project-view"></div>
+            <div id = "close-project-view"><a href="#" onclick="hideProjInfo()">exit</a></div>
+            <div id = "project-name"></div>
+            <div id = "project-desc"></div>
+        </div>
+</body>

@@ -1,0 +1,141 @@
+body{
+    background-color:white; 
+    transition-duration:1000ms; 
+    font-family:sans-serif; 
+}
+
+#bg{ 
+    opacity:0; 
+    display:none; 
+    position:fixed;
+    z-index:-1; 
+    height:100%; 
+    width:100%; 
+    top:0px; 
+    left:0px; 
+    background-image: url(../media/bg.png);
+    transition-duration: 500ms; 
+}
+
+
+#intro{ 
+    z-index:10;
+    filter:none; 
+    transition-duration:1000ms; 
+    color:black; 
+    width:750px; 
+    height:200px; 
+    padding:0px; 
+    position:absolute;
+    left:calc(50% - 375px);
+    top:calc(40% - 50px);
+    text-align: center; 
+    font-weight:300; 
+    font-stretch: ultra-expanded;
+    font-variant: small-caps; 
+    font-family:inherit;
+    font-size: 20px; 
+}
+
+#info{
+    z-index:-1; 
+    display:none; 
+    opacity:0; 
+    transition-duration:400ms; 
+    font-weight:300; 
+    font-stretch: ultra-expanded;
+    font-family:inherit;
+    font-size: 14px; 
+}
+
+
+.infobox{
+    position:relative; 
+    opacity:inherit; 
+    transition-duration:inherit; 
+    width:75%; 
+    margin-left:70px; 
+    margin-top:10px; 
+    padding:10px; 
+    height:auto; 
+    background-color: rgba(255,255,255,0.2); 
+}
+.infobox-head{
+    position:relative; 
+    font-weight: 540; 
+    font-variant:small-caps; 
+    font-size:20pt;
+    letter-spacing:3px; 
+    margin-left:0px; 
+    margin-bottom:10px; 
+}
+.infobox-content{
+    position:relative; 
+    margin-left: 20px; 
+}
+.infobox a{
+    color:rgb(100,100,255) !important; 
+}
+.infobox a:hover{
+    color:rgb(0,0,255) !important; 
+}
+#infohead{
+    position:static; 
+    opacity: inherit;
+    transition-duration:inherit; 
+    left:0px; 
+    top:0px; 
+    padding:10px; 
+    font-weight: 500; 
+    font-variant:small-caps; 
+    font-size:40pt;
+    letter-spacing:10px; 
+}
+
+#intro a, #info a{ 
+    text-decoration: none; 
+    color:rgb(150,150,150); 
+    transition-duration:1000ms; 
+}
+
+#intro a:hover, #info a:hover{
+    color:rgb(0,0,255); 
+}
+
+#head{
+    height:100px; 
+    font-weight: 500; 
+    font-size:40pt;
+    letter-spacing:10px; 
+    background-image:url("../media/exp6.gif");
+    background-repeat: no-repeat;
+    background-size: 750px 100px; 
+}
+
+#back{
+    position:sticky; 
+    top:10px; 
+    left:10px; 
+    font-size: 12pt; 
+}
+
+.line{
+    background-color:rgb(150,150,150); 
+    width:100px;
+    height:2px; 
+    margin-bottom:3px;
+}
+
+.dot{
+    background-color:black; 
+    width:2px;
+    height:2px; 
+    margin-bottom:3px;   
+}
+
+span{
+    transition-duration: inherit; 
+    opacity: inherit; 
+    display:inline-block;
+    line-height: 100px; 
+}

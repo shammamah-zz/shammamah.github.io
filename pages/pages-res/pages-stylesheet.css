@@ -1,0 +1,127 @@
+body{
+    opacity:0; 
+    background-color:white; 
+    transition-duration:500ms; 
+    font-family: sans-serif; 
+}
+
+#bg{ 
+    opacity:0; 
+    position:fixed;
+    z-index:-1; 
+    height:100%; 
+    width:100%; 
+    top:0px; 
+    left:0px; 
+    background-image: url(../../media/bg.png);
+    transition-duration: 750ms; 
+}
+
+
+
+#back, #close-project-view{
+    position:sticky; 
+    top:100px; 
+    left:15px; 
+    font-size: 12pt;
+    font-weight: 300; 
+}
+#close-project-view{
+    top:10px; 
+    text-align: right; 
+    padding-right:10px; 
+    padding-top:5px; 
+}
+#back a, #close-project-view a{
+    text-decoration: none; 
+    color:rgb(150,150,150); 
+    transition-duration:1000ms; 
+}
+#back a:hover, #close-project-view a:hover{
+    color:rgb(0,0,255); 
+}
+
+#head{
+    position:static; 
+    opacity: inherit;
+    transition-duration:inherit; 
+    left:0px; 
+    top:0px; 
+    padding:10px; 
+    padding-top:25px; 
+    font-weight: 500; 
+    font-variant:small-caps; 
+    font-size:40pt;
+    font-family:inherit; 
+    letter-spacing:10px; 
+}
+
+#project-wrap{
+    width:90%; 
+    margin-left:10%; 
+    margin-right:10%; 
+    transition-duration:200ms; 
+}
+
+.project-box{
+    width:250px; 
+    height:250px; 
+    margin:10px; 
+    float:left; 
+    border-style:solid; 
+    border-width:thin; 
+}
+
+.project-box img{
+    height:250px; 
+    width:250px; 
+    padding:none; 
+    transition-duration:700ms; 
+    opacity:0.7;
+}
+
+.project-box img:hover{
+    opacity:1; 
+}
+
+#project-info{
+    width:600px; 
+    left:75px; 
+    position:absolute; 
+    border-style:solid; 
+    border-width: thin;
+    display:none; 
+    z-index:-1; 
+    opacity:0; 
+    transition-duration:1000ms; 
+}
+
+#project-view{
+    width:300px;
+    height:300px; 
+    padding:25px;
+    float:left; 
+    opacity:inherit; 
+    z-index: inherit
+}
+
+#project-desc{
+    width:200px; 
+    float:left; 
+    padding-top:25px;
+    font-size: 10pt;
+    font-weight: 300; 
+}
+#project-name{
+    width:100%; 
+    font-weight: 540; 
+    font-variant:small-caps; 
+    font-size:20pt;
+    letter-spacing:3px; 
+    padding-bottom:5px; 
+    padding-top:5px; 
+}
+#project-name a, #project-name a:visited, #project-desc a, #project-desc a:visited{
+    text-decoration: none;
+    color:rgb(0,0,255);
+}
