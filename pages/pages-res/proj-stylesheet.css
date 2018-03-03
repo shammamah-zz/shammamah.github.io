@@ -11,7 +11,7 @@ body{
     width:100%; 
     top:0px; 
     left:0px; 
-    background-image: url(../../media/bg.png);
+    background-color:rgb(205,205,255); 
     transition-duration: 750ms; 
 }
 
