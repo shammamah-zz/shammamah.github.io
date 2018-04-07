@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/shammamah
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://shammamah.github.io
+  * I am shammamah (https://keybase.io/shammamah) on keybase.
+  * I have a public key ASCkjYkdNGIvsuIaK4B1IBXb8TswKBae1p3kto-tbWenZQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120d820a09c34f31c958e4b099dd0955b4309b702ffed9543ab6215c5521b390d4d0a",
+      "host": "keybase.io",
+      "kid": "0120a48d891d34622fb2e21a2b80752015dbf13b3028169ed69de4b68fad6d67a7650a",
+      "uid": "0e0d08888caa5c86bd68761dece00619",
+      "username": "shammamah"
+    },
+    "merkle_root": {
+      "ctime": 1523123605,
+      "hash": "6dbdeb9769652bd6e879553729b501cd532b5904aae70cb1dd69b806c88986ae6aca79450926a6c503faa48fc8b354232b97ec8119e39945047339faf80645d1",
+      "hash_meta": "104476a7e7c948b50a5fb899ec36f50cde2e060b6c798206ac3cb0c37d740ee0",
+      "seqno": 2351926
+    },
+    "service": {
+      "entropy": "HinaG3mGlkvFtkWzcbaCbdvf",
+      "hostname": "shammamah.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.47"
+  },
+  "ctime": 1523123626,
+  "expire_in": 504576000,
+  "prev": "b5417cf83a835b85ba3228fbb9fe377e58e4ccf9e955c415c1cea4f716dfcbea",
+  "seqno": 15,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgpI2JHTRiL7LiGiuAdSAV2/E7MCgWntad5LaPrW1np2UKp3BheWxvYWTESpcCD8QgtUF8+DqDW4W6Mij7uf43fljkzPnpVcQVwc6k9xbfy+rEIL69Walc8589uCQ4JvkXxdIEYdAmsY+GDh0PmYJa91NeAgHCo3NpZ8RAZwoq1IJIg16Km0nLXLrnloVU7c2Xa6eqKnatbASJUZT8sFs785KQYC5GIV1C4R/t1iFmCd9YZYhAoBOyHFLOBKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIMp7vE2zQzSwJtYypxIoAyBrunkWcv0foWA0QLzP0Jlmo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/shammamah
+
+==================================================================
